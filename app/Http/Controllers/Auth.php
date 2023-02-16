@@ -14,6 +14,6 @@ class Auth extends Controller
      */
     public function __invoke(Request $request)
     {
-        return view('auth.auth');
+        return view('pages.auth.app');
     }
 }

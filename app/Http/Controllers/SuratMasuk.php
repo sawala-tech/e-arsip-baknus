@@ -14,6 +14,6 @@ class SuratMasuk extends Controller
      */
     public function __invoke(Request $request)
     {
-        return view('surat-masuk.surat-masuk');
+        return view('pages.surat-masuk.app');
     }
 }

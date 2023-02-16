@@ -1,4 +1,4 @@
-@extends('layout.auth.app')
+@extends('components.layout.auth.app')
 @section('title', 'E-Arsip || Masuk')
 @section('content')
     <div class="d-flex align-items-center justify-content-center vh-100">
