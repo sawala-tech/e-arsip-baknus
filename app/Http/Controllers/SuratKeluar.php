@@ -14,6 +14,6 @@ class SuratKeluar extends Controller
      */
     public function __invoke(Request $request)
     {
-        return view('surat-keluar.surat-keluar');
+        return view('pages.surat-keluar.app');
     }
 }
