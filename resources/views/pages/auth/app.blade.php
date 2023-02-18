@@ -6,13 +6,19 @@
             <div class="d-flex align-items-center justify-content-center">
                 <img src="{{ asset('images/logo.png') }}" class="card-img-top w-50 h-50" alt="...">
             </div>
-            <h1 class="fs-5 fw-bolder text-body my-4 text-align-center">Masuk</h1>
-            <form class="w-100">
+            <h5 class="text-body my-4 text-align-center">Masuk</h5>
+            @if (session('error'))
+                <div class="alert alert-danger w-100 py-1 px-3 text-center" role="alert">
+                    {{ session('error') }}
+                </div>
+            @endif
+            <form class="w-100" method="POST" action="/login">
+                @csrf
                 <div class="mb-3">
-                    <input type="email" class="form-control rounded" placeholder="Email">
+                    <input type="email" name="email" class="form-control rounded" placeholder="Email">
                 </div>
                 <div class="mb-3">
-                    <input type="password" class="form-control rounded" placeholder="Kata Sandi">
+                    <input type="password" name="password" class="form-control rounded" placeholder="Kata Sandi">
                 </div>
                 <a href="dashboard">
                     <button type="submit" class="btn bg-sea text-white w-100">Masuk</button>

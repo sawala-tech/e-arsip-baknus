@@ -80,3 +80,14 @@ button:focus {
 .bg-gray {
     background-color: #F3F4F6;
 }
+
+.border-dashed {
+    border-style: dashed !important;
+    border-color: #e7eaf0;
+}
+
+.btn-outline-gray {
+    outline: none !important;
+    border: 2px solid #6B7280 !important;
+    color: #6B7280 !important;
+}

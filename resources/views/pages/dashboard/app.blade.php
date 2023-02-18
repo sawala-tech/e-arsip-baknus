@@ -1,8 +1,8 @@
 @extends('components.layout.main.app')
 @section('title', 'E-Arsip || Dashboard')
 @section('content')
-    <h2 class="fs-3 fw-bolder">Dashboard</h2>
-    <p>Senin, 26 September 2022</p>
+    <h2 class="">Dashboard</h2>
+    <p id="current_date"></p>
 
     <div class="row mt-5">
         <div class="col-6 px-2">
@@ -10,9 +10,9 @@
                 <div class="bg-sea p-3 rounded">
                     <i class="fas fa-download fa-lg text-white"></i>
                 </div>
-                <div class="mx-2">
-                    <h3 class="fs-6 text-secondary mb-0">Surat Masuk</h3>
-                    <p class="m-0 fs-3 fw-bolder">19</p>
+                <div class="mx-3">
+                    <h5 class="text-secondary mb-0">Surat Masuk</h5>
+                    <h4 class="m-0">{{ $countSuratMasuk }}</h4>
                 </div>
             </div>
         </div>
@@ -21,9 +21,9 @@
                 <div class="bg-salmon p-3 rounded">
                     <i class="fas fa-paper-plane fa-lg text-white"></i>
                 </div>
-                <div class="mx-2">
-                    <h3 class="fs-6 text-secondary mb-0">Surat Keluar</h3>
-                    <p class="m-0 fs-3 fw-bolder">19</p>
+                <div class="mx-3">
+                    <h5 class="text-secondary mb-0">Surat Keluar</h5>
+                    <h4 class="m-0">{{ $countSuratKeluar }}</h4>
                 </div>
             </div>
         </div>
@@ -44,66 +44,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>R/01/KP01/VI/2023</td>
-                        <td>Permohonan Narasumber Workshop</td>
-                        <td>Undangan</td>
-                        <td>13-02-2023</td>
-                        <td>
+                    @foreach ($latest as $item)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $item['nomor_surat'] }}</td>
+                            <td>{{ $item['judul_surat'] }}</td>
+                            <td>{{ $item['kategori'] }}</td>
+                            <td>{{ $item['tanggal_surat'] }}</td>
+                            <td>{{ $item['jenis_surat'] }}</td>
+                            {{-- <td>
                             <span class='rounded-pill bg-green px-2 py-1'>
                                 surat masuk
                             </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>R/01/KP01/VI/2023</td>
-                        <td>Rapat Guru</td>
-                        <td>Undangan</td>
-                        <td>13-02-2023</td>
-                        <td>
-                            <span class='rounded-pill bg-yellow px-2 py-1'>
-                                surat keluar
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>R/01/KP01/VI/2023</td>
-                        <td>Rapat Guru</td>
-                        <td>Undangan</td>
-                        <td>13-02-2023</td>
-                        <td>
-                            <span class='rounded-pill bg-green px-2 py-1'>
-                                surat masuk
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>R/01/KP01/VI/2023</td>
-                        <td>Rapat Guru</td>
-                        <td>Undangan</td>
-                        <td>13-02-2023</td>
-                        <td>
-                            <span class='rounded-pill bg-yellow px-2 py-1'>
-                                surat keluar
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>R/01/KP01/VI/2023</td>
-                        <td>Rapat Guru</td>
-                        <td>Undangan</td>
-                        <td>13-02-2023</td>
-                        <td>
-                            <span class='rounded-pill bg-green px-2 py-1'>
-                                surat masuk
-                            </span>
-                        </td>
-                    </tr>
+                        </td> --}}
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

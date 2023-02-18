@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth;
+use App\Http\Controllers\Authentication;
+use App\Http\Controllers\SuratKeluarController;
+use App\Http\Controllers\SuratMasukController;
 use App\Http\Controllers\Dashboard;
-use App\Http\Controllers\SuratMasuk;
-use App\Http\Controllers\SuratKeluar;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +17,17 @@ use App\Http\Controllers\SuratKeluar;
 |
 */
 
-Route::get('/', Auth::class);
-Route::get('/dashboard', Dashboard::class);
-Route::get('/surat-masuk', SuratMasuk::class);
-Route::get('/surat-keluar', SuratKeluar::class);
+Route::get('/', Authentication::class)->name('login')->middleware('guest');
+Route::post('/login', [Authentication::class, 'login'])->middleware('guest');
+Route::post('/logout', [Authentication::class, 'logout'])->middleware('auth');
+Route::get('/surat-keluar/laporan', [SuratKeluarController::class, 'laporan'])->middleware('auth');
+Route::resource('/surat-keluar', SuratKeluarController::class)->middleware('auth');
+Route::get('/surat-keluar/detail/{id}', [SuratKeluarController::class, 'detail'])->middleware('auth');
+Route::get('/export/surat-keluar', [SuratKeluarController::class, 'exportExcel'])->middleware('auth');
+
+Route::get('/surat-masuk/laporan', [SuratMasukController::class, 'laporan'])->middleware('auth');
+Route::resource('/surat-masuk', SuratMasukController::class)->middleware('auth');
+Route::get('/surat-masuk/detail/{id}', [SuratMasukController::class, 'detail'])->middleware('auth');
+Route::get('/export/surat-masuk', [SuratMasukController::class, 'exportExcel'])->middleware('auth');
+
+Route::get('/dashboard',Dashboard::class)->middleware('auth');
