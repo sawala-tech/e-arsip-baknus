@@ -7,6 +7,11 @@
     <title>Dashboard</title>
 </head>
 <body>
+    <h1>Dashboard</h1>
+    <form action="/logout" method="POST">
+    @csrf
+    <button type="submit">Logout</button>
+    </form>
     <p>Surat Masuk :{{$countSuratMasuk}}</p>
     <p>Surat Keluar :{{$countSuratKeluar}}</p>
 
