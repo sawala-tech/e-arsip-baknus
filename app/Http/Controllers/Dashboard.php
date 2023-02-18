@@ -63,9 +63,10 @@ class Dashboard extends Controller
         $returnData= [
             'latest' => $newestSurat,
             'countSuratMasuk' => $countSuratMasuk,
-            'countSuratKeluar' => $countSuratKeluar
+            'countSuratKeluar' => $countSuratKeluar,
         ];
-        return view('pages.dashboard.app', $returnData);
+        $currentPath = $request->path();
+        return view('pages.dashboard.app', $returnData, ['currentPath' => $currentPath]);
     }
 
     private function transformArraySurat($array, $jenisSurat){

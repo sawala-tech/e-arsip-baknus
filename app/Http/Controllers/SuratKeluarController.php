@@ -21,8 +21,9 @@ class SuratKeluarController extends Controller
     {
         //get data from database with pagination
         $suratKeluar = SuratKeluar::all();
+        $currentPath = 'surat';
         //return to view
-        return view('pages.surat-keluar.app', compact('suratKeluar'));
+        return view('pages.surat-keluar.app', compact('suratKeluar'), ['currentPath' => $currentPath]);
     }
     public function detail($id)
     {
@@ -91,7 +92,8 @@ class SuratKeluarController extends Controller
     public function edit($id)
     {
         $suratKeluar = SuratKeluar::find($id);
-        return view('pages/surat-keluar.edit',$suratKeluar);
+        $datakategory = ['permohonan','undangan','pemberitahuan','permintaan','tugas','rekomendasi','pengantar'];
+        return view('pages/surat-keluar.edit',$suratKeluar, ['datakategory' => $datakategory]);
     }
 
     /**

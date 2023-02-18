@@ -10,7 +10,7 @@
     <h2 class="fs-3 fw-bolder">Surat Masuk</h2>
     <div class="container-fluid p-0 my-5">
         <div class="justify-content-between mb-3 d-flex">
-            <a href="{{ route('surat-masuk.create') }}"
+            <button onclick="window.location.href='{{ route('surat-masuk.create') }}'"
                 class="rounded-lg bg-sea p-2 text-white align-items-center d-flex border-0">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M8 4V12M12 8H4" stroke="white" stroke-width="1.5" stroke-linecap="round"
@@ -19,13 +19,15 @@
                 <span class="px-2">
                     Tambah Surat
                 </span>
-                </button>
+            </button>
+            </a>
 
-                <div class="w-auto position-relative">
-                    <i class="fas fa-search fa-sm position-absolute mt-2 pt-1 ml-3 text-secondary"></i>
-                    <input type="text" class="form-control pl-5 text-secondary" id="search-input"
-                        placeholder="Cari Surat Masuk" />
-                </div>
+            <div class="w-auto position-relative">
+                <i class="fas fa-search fa-sm position-absolute mt-2 pt-1 ml-3 text-secondary"></i>
+                <input type="text" class="form-control pl-5 text-secondary" id="search-input"
+                    placeholder="Cari Surat Masuk" />
+            </div>
+
         </div>
         <div class="bg-white rounded-lg shadow-sm border-0 px-2 pb-2">
             <table id="table_data" class="table w-100">
@@ -48,11 +50,12 @@
                             <td>{{ $item->nomor_surat }}</td>
                             <td>{{ $item->judul_surat }}</td>
                             <td>{{ $item->kategori }}</td>
-                            <td>{{ $item->tanggal_masuk }}</td>
                             <td>{{ $item->asal_surat }}</td>
+                            <td>{{ $item->tanggal_masuk }}</td>
                             <td>{{ $item->keterangan }}</td>
                             <td class="d-flex flex-row">
-                                <button class="bg-primary rounded border-0 align-items-center d-flex p-2">
+                                <button onclick="window.location.href='/surat-masuk/detail/{{ $item->id }}'"
+                                    class="bg-primary rounded border-0 align-items-center d-flex p-2">
                                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -65,7 +68,7 @@
                                             stroke-linejoin="round" />
                                     </svg>
                                 </button>
-                                <a href="{{ route('surat-masuk.edit', $item->id) }}"
+                                <button onclick="window.location.href='{{ route('surat-masuk.edit', $item->id) }}'"
                                     class="bg-success rounded border-0 align-items-center d-flex p-2 mx-1">
                                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -76,7 +79,7 @@
                                             d="M2.4499 4.02498C2.4499 3.54198 2.8419 3.14998 3.3249 3.14998H6.9999C7.13914 3.14998 7.27268 3.09466 7.37113 2.99621C7.46959 2.89775 7.5249 2.76421 7.5249 2.62498C7.5249 2.48574 7.46959 2.3522 7.37113 2.25374C7.27268 2.15529 7.13914 2.09998 6.9999 2.09998H3.3249C2.81436 2.09998 2.32473 2.30279 1.96372 2.6638C1.60271 3.0248 1.3999 3.51443 1.3999 4.02498V10.675C1.3999 11.1855 1.60271 11.6751 1.96372 12.0362C2.32473 12.3972 2.81436 12.6 3.3249 12.6H9.9749C10.4854 12.6 10.9751 12.3972 11.3361 12.0362C11.6971 11.6751 11.8999 11.1855 11.8999 10.675V6.99998C11.8999 6.86074 11.8446 6.7272 11.7461 6.62874C11.6477 6.53029 11.5141 6.47498 11.3749 6.47498C11.2357 6.47498 11.1021 6.53029 11.0037 6.62874C10.9052 6.7272 10.8499 6.86074 10.8499 6.99998V10.675C10.8499 11.158 10.4579 11.55 9.9749 11.55H3.3249C2.8419 11.55 2.4499 11.158 2.4499 10.675V4.02498Z"
                                             fill="white" />
                                     </svg>
-                                </a>
+                                </button>
                                 <form action="{{ route('surat-masuk.destroy', $item->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
