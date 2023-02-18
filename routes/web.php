@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth;
+use App\Http\Controllers\Dashboard;
+use App\Http\Controllers\SuratMasuk;
+use App\Http\Controllers\SuratKeluar;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,3 +18,6 @@ use App\Http\Controllers\Auth;
 */
 
 Route::get('/', Auth::class);
+Route::get('/dashboard', Dashboard::class);
+Route::get('/surat-masuk', SuratMasuk::class);
+Route::get('/surat-keluar', SuratKeluar::class);

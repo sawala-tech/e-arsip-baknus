@@ -14,7 +14,9 @@
                 <div class="mb-3">
                     <input type="password" class="form-control rounded" placeholder="Kata Sandi">
                 </div>
-                <button type="submit" class="btn btn-primary w-100">Masuk</button>
+                <a href="dashboard">
+                    <button type="submit" class="btn bg-sea text-white w-100">Masuk</button>
+                </a>
             </form>
         </div>
     </div>
