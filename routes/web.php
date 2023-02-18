@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth;
+use App\Http\Controllers\SuratKeluarController;
+use App\Http\Controllers\SuratMasukController;
+use App\Http\Controllers\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,3 +18,9 @@ use App\Http\Controllers\Auth;
 */
 
 Route::get('/', Auth::class);
+Route::resource('/surat-keluar', SuratKeluarController::class);
+Route::resource('/surat-masuk', SuratMasukController::class);
+Route::get('/surat-keluar/detail/{id}', [SuratKeluarController::class, 'detail']);
+Route::get('/surat-masuk/detail/{id}', [SuratMasukController::class, 'detail']);
+Route::get('/dashboard',Dashboard::class);
+//resource('suratmasuk', SuratMasukController::class);
