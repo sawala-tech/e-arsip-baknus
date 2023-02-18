@@ -1,5 +1,5 @@
-<aside class="col-lg-2 mx-0 bg-white position-relative vh-100">
-    <nav class="sidebar card border-0 py-2 mb-4 sticky-top position-sticky top-0">
+<aside class="col-lg-2 mx-0 bg-white min-vh-100">
+    <nav class="sidebar card border-0 py-2 mb-4">
         <ul class="nav flex-column" id="nav_accordion">
             <li class="nav-item rounded bg-gray">
                 <a class="nav-link item text-body d-flex justify-content-between align-items-center" href="/dashboard">
