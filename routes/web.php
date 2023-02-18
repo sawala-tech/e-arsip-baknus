@@ -19,8 +19,12 @@ use App\Http\Controllers\Dashboard;
 
 Route::get('/', Auth::class);
 Route::resource('/surat-keluar', SuratKeluarController::class);
-Route::resource('/surat-masuk', SuratMasukController::class);
 Route::get('/surat-keluar/detail/{id}', [SuratKeluarController::class, 'detail']);
+Route::get('/export/surat-keluar', [SuratKeluarController::class, 'exportExcel']);
+
+Route::resource('/surat-masuk', SuratMasukController::class);
 Route::get('/surat-masuk/detail/{id}', [SuratMasukController::class, 'detail']);
+Route::get('/export/surat-masuk', [SuratMasukController::class, 'exportExcel']);
+
 Route::get('/dashboard',Dashboard::class);
 //resource('suratmasuk', SuratMasukController::class);

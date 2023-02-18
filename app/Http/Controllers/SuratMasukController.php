@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
+use App\Exports\suratMasukExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SuratMasukController extends Controller
 {
@@ -20,7 +22,7 @@ class SuratMasukController extends Controller
         //get data from database with pagination
         $suratMasuk = SuratMasuk::all();
         //return to view
-        return view('pages.surat-masuk.surat-masuk', compact('suratMasuk'));
+        return view('pages.surat-masuk.app', compact('suratMasuk'));
     }
     public function detail($id)
     {
@@ -144,5 +146,13 @@ class SuratMasukController extends Controller
  
          Session::flash('message', 'Data berhasil dihapus!');
          return Redirect::to('surat-masuk');
+    }
+
+    public function exportExcel()
+    {
+        //get params from url search
+        $params = request()->query();
+        $search = $params['search'] ?? '';
+        return Excel::download(new SuratMasukExport($search), 'surat-masuk.xlsx'); 
     }
 }
