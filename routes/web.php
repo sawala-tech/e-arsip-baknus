@@ -18,10 +18,12 @@ use App\Http\Controllers\Dashboard;
 */
 
 Route::get('/', Auth::class);
+Route::get('/surat-keluar/laporan', [SuratKeluarController::class, 'laporan']);
 Route::resource('/surat-keluar', SuratKeluarController::class);
 Route::get('/surat-keluar/detail/{id}', [SuratKeluarController::class, 'detail']);
 Route::get('/export/surat-keluar', [SuratKeluarController::class, 'exportExcel']);
 
+Route::get('/surat-masuk/laporan', [SuratMasukController::class, 'laporan']);
 Route::resource('/surat-masuk', SuratMasukController::class);
 Route::get('/surat-masuk/detail/{id}', [SuratMasukController::class, 'detail']);
 Route::get('/export/surat-masuk', [SuratMasukController::class, 'exportExcel']);

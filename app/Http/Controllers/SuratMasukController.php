@@ -148,6 +148,12 @@ class SuratMasukController extends Controller
          return Redirect::to('surat-masuk');
     }
 
+    public function laporan()
+    {
+        $suratMasuk = SuratMasuk::all();
+        return view('pages.surat-masuk.laporan', compact('suratMasuk'));
+    }
+
     public function exportExcel()
     {
         //get params from url search

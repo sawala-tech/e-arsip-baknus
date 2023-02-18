@@ -147,6 +147,13 @@ class SuratKeluarController extends Controller
         Session::flash('message', 'Data berhasil dihapus!');
         return Redirect::to('surat-keluar');
     }
+
+    public function laporan()
+    {
+        $suratKeluar = SuratKeluar::all();
+        return view('pages.surat-keluar.laporan', compact('suratKeluar'));
+    }
+
     public function exportExcel()
     {
         $params = request()->query();

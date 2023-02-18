@@ -65,7 +65,7 @@ class Dashboard extends Controller
             'countSuratMasuk' => $countSuratMasuk,
             'countSuratKeluar' => $countSuratKeluar
         ];
-        return view('pages.dashboard.dashboard', $returnData);
+        return view('pages.dashboard.app', $returnData);
     }
 
     private function transformArraySurat($array, $jenisSurat){
