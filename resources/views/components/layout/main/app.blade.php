@@ -15,7 +15,7 @@
 
 </head>
 
-<body style="background-color: #F3F4F6;">
+<body class='bg-gray'>
     @include('components.header.app')
     <div class="container-fluid">
         <section class="section-content">
