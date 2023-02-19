@@ -15,10 +15,10 @@
             <form class="w-100" method="POST" action="/login">
                 @csrf
                 <div class="mb-3">
-                    <input type="email" name="email" class="form-control rounded" placeholder="Email">
+                    <input type="email" name="email" class="form-control rounded" placeholder="Email" required>
                 </div>
                 <div class="mb-3">
-                    <input type="password" name="password" class="form-control rounded" placeholder="Kata Sandi">
+                    <input type="password" name="password" class="form-control rounded" placeholder="Kata Sandi" required>
                 </div>
                 <a href="dashboard">
                     <button type="submit" class="btn bg-sea text-white w-100">Masuk</button>
