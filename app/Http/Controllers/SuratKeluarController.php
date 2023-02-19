@@ -17,19 +17,20 @@ class SuratKeluarController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    protected $currentPath='surat';
+
     public function index()
     {
         //get data from database with pagination
         $suratKeluar = SuratKeluar::all();
-        $currentPath = 'surat';
         //return to view
-        return view('pages.surat-keluar.app', compact('suratKeluar'), ['currentPath' => $currentPath]);
+        return view('pages.surat-keluar.app', compact('suratKeluar'), ['currentPath' => $this->currentPath]);
     }
     public function detail($id)
     {
         $suratKeluar = SuratKeluar::find($id);
         //return to view
-        return view('pages.surat-keluar.detail', compact('suratKeluar'));
+        return view('pages.surat-keluar.detail', compact('suratKeluar'), ['currentPath' => $this->currentPath]);
     }
 
     /**
@@ -39,7 +40,7 @@ class SuratKeluarController extends Controller
      */
     public function create()
     {
-        return view('pages.surat-keluar.create');
+        return view('pages.surat-keluar.create', ['currentPath' => $this->currentPath]);
     }
 
     /**
@@ -49,7 +50,17 @@ class SuratKeluarController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
+    
+        $this->validate($request, [
+            'nomor_surat' => 'required',
+            'judul_surat' => 'required',
+            'kategori' => 'required|in:permohonan,undangan,pemberitahuan,permintaan,tugas,rekomendasi,pengantar',
+            'tanggal_keluar' => 'required',
+            'tujuan_surat' => 'required',
+            'keterangan' => 'required',
+            'lampiran' => 'required|mimes:pdf,doc,docx'
+        ]);
         //store data from request
         $suratKeluar = new SuratKeluar;
         $suratKeluar->nomor_surat = $request->get('nomor_surat');
@@ -93,7 +104,7 @@ class SuratKeluarController extends Controller
     {
         $suratKeluar = SuratKeluar::find($id);
         $datakategory = ['permohonan','undangan','pemberitahuan','permintaan','tugas','rekomendasi','pengantar'];
-        return view('pages/surat-keluar.edit',$suratKeluar, ['datakategory' => $datakategory]);
+        return view('pages/surat-keluar.edit',$suratKeluar, ['datakategory' => $datakategory, 'currentPath' => $this->currentPath]);
     }
 
     /**
@@ -105,6 +116,15 @@ class SuratKeluarController extends Controller
      */
     public function update(Request $request, $id)
     {  
+        $this->validate($request, [
+            'nomor_surat' => 'required',
+            'judul_surat' => 'required',
+            'kategori' => 'required|in:permohonan,undangan,pemberitahuan,permintaan,tugas,rekomendasi,pengantar',
+            'tanggal_keluar' => 'required',
+            'tujuan_surat' => 'required',
+            'keterangan' => 'required',
+            'lampiran'=>'mimes:pdf,doc,docx'
+        ]);
         $suratKeluar = SuratKeluar::find($id);
         $suratKeluar->nomor_surat = $request->get('nomor_surat');
         $suratKeluar->judul_surat = $request->get('judul_surat');
@@ -153,7 +173,7 @@ class SuratKeluarController extends Controller
     public function laporan()
     {
         $suratKeluar = SuratKeluar::all();
-        return view('pages.surat-keluar.laporan', compact('suratKeluar'));
+        return view('pages.surat-keluar.laporan', compact('suratKeluar'), ['currentPath' => 'laporan']);
     }
 
     public function exportExcel()

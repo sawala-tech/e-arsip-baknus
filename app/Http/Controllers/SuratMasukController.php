@@ -17,19 +17,20 @@ class SuratMasukController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    private $currentPath='surat';
+
     public function index()
     {
         //get data from database with pagination
         $suratMasuk = SuratMasuk::all();
-        $currentPath = 'surat';
         //return to view
-        return view('pages.surat-masuk.app', compact('suratMasuk') , ['currentPath' => $currentPath]);
+        return view('pages.surat-masuk.app', compact('suratMasuk') , ['currentPath' => $this->currentPath]);
     }
     public function detail($id)
     {
         $suratMasuk = SuratMasuk::find($id);
         //return to view
-        return view('pages.surat-masuk.detail', compact('suratMasuk'));
+        return view('pages.surat-masuk.detail', compact('suratMasuk'), ['currentPath' => $this->currentPath]);
     }
 
     /**
@@ -39,7 +40,7 @@ class SuratMasukController extends Controller
      */
     public function create()
     {
-        return view('pages.surat-masuk.create');
+        return view('pages.surat-masuk.create', ['currentPath' => $this->currentPath]);
     }
 
     /**
@@ -50,6 +51,18 @@ class SuratMasukController extends Controller
      */
     public function store(Request $request)
     {
+        //validate data
+        //validate kategori enum
+        $this->validate($request, [
+            'nomor_surat' => 'required',
+            'judul_surat' => 'required',
+            'kategori' => 'required|in:permohonan,undangan,pemberitahuan,permintaan,tugas,rekomendasi,pengantar',
+            'tanggal_masuk' => 'required',
+            'asal_surat' => 'required',
+            'keterangan' => 'required',
+            'lampiran' => 'required|mimes:pdf,doc,docx'
+        ]);
+
         //store data from request
         $suratMasuk = new SuratMasuk;
         $suratMasuk->nomor_surat = $request->get('nomor_surat');
@@ -93,7 +106,7 @@ class SuratMasukController extends Controller
     {
         $suratMasuk = SuratMasuk::find($id);
         $datakategory = ['permohonan','undangan','pemberitahuan','permintaan','tugas','rekomendasi','pengantar'];
-        return view('pages/surat-masuk.edit', $suratMasuk, ['datakategory' => $datakategory]);
+        return view('pages/surat-masuk.edit', $suratMasuk, ['datakategory' => $datakategory, 'currentPath' => $this->currentPath]);
     }
 
     /**
@@ -104,7 +117,16 @@ class SuratMasukController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    {   
+        $this->validate($request, [
+            'nomor_surat' => 'required',
+            'judul_surat' => 'required',
+            'kategori' => 'required|in:permohonan,undangan,pemberitahuan,permintaan,tugas,rekomendasi,pengantar',
+            'tanggal_masuk' => 'required',
+            'asal_surat' => 'required',
+            'keterangan' => 'required',
+            'lampiran'=>'mimes:pdf,doc,docx'
+        ]);
         $suratMasuk = SuratMasuk::find($id);
         $suratMasuk->nomor_surat = $request->get('nomor_surat');
         $suratMasuk->judul_surat = $request->get('judul_surat');
@@ -153,7 +175,7 @@ class SuratMasukController extends Controller
     public function laporan()
     {
         $suratMasuk = SuratMasuk::all();
-        return view('pages.surat-masuk.laporan', compact('suratMasuk'));
+        return view('pages.surat-masuk.laporan', compact('suratMasuk'), ['currentPath' => 'laporan']);
     }
 
     public function exportExcel()

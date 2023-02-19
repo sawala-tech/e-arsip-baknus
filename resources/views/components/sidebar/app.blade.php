@@ -28,8 +28,8 @@
                     <li><a class="nav-link text-secondary" href="/surat-keluar">Surat Keluar </a></li>
                 </ul>
             </li>
-            <li class="nav-item has-submenu">
-                <a class="nav-link item text-secondary d-flex justify-content-between align-items-center"
+            <li class="nav-item has-submenu {{ $currentPath === 'laporan' ? 'bg-gray' : '' }}">
+                <a class="nav-link item {{ $currentPath === 'laporan' ? 'text-body' : 'text-secondary' }} d-flex justify-content-between align-items-center"
                     href="#">
                     <div>
                         <i class="fas fa-download text-center" style="width: 30px"></i>
