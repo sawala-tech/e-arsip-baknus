@@ -9,7 +9,7 @@
             </a>
         </div>
         @if (session('message'))
-            <div>
+            <div class="alert alert-success w-100 py-1 px-3 text-center" role="alert" id="alert-div">
                 {{ session('message') }}
             </div>
         @endif
@@ -22,11 +22,13 @@
                         <div class="form-group row">
                             <label for="nomor_surat" class="col-sm-2 col-form-label">Nomor Surat</label>
                             <div class="col-sm-10">
-                                <input type="text" name="nomor_surat" class="form-control @error('nomor_surat') is-invalid @enderror" id="nomor_surat"
-                                    value="{{ (old('nomor_surat'))?old('nomor_surat'):$nomor_surat }}" placeholder="Nomor Surat...">
+                                <input type="text" name="nomor_surat"
+                                    class="form-control @error('nomor_surat') is-invalid @enderror" id="nomor_surat"
+                                    value="{{ old('nomor_surat') ? old('nomor_surat') : $nomor_surat }}"
+                                    placeholder="Nomor Surat...">
                                 @error('nomor_surat')
                                     <div class="invalid-feedback">
-                                        {{ $errors->first('nomor_surat')  }}
+                                        {{ $errors->first('nomor_surat') }}
                                     </div>
                                 @enderror
                             </div>
@@ -34,11 +36,13 @@
                         <div class="form-group row">
                             <label for="judul_surat" class="col-sm-2 col-form-label">Judul Surat</label>
                             <div class="col-sm-10">
-                                <input type="text" name="judul_surat" class="form-control @error('judul_surat') is-invalid @enderror" id="judul_surat"
-                                    value="{{ (old('judul_surat'))?old('judul_surat'):$judul_surat }}" placeholder="Judul Surat...">
+                                <input type="text" name="judul_surat"
+                                    class="form-control @error('judul_surat') is-invalid @enderror" id="judul_surat"
+                                    value="{{ old('judul_surat') ? old('judul_surat') : $judul_surat }}"
+                                    placeholder="Judul Surat...">
                                 @error('judul_surat')
                                     <div class="invalid-feedback">
-                                        {{ $errors->first('judul_surat')  }}
+                                        {{ $errors->first('judul_surat') }}
                                     </div>
                                 @enderror
                             </div>
@@ -48,13 +52,14 @@
                             <div class="col-sm-10">
                                 <select class="custom-select @error('kategori') is-invalid @enderror" name="kategori">
                                     @foreach ($datakategory as $category)
-                                        <option value="{{ $category }}" {{ ($category == $kategori && old('kategori')=='' || old('kategori')==$category)? 'selected' : '' }}>
+                                        <option value="{{ $category }}"
+                                            {{ ($category == $kategori && old('kategori') == '') || old('kategori') == $category ? 'selected' : '' }}>
                                             {{ $category }}</option>
                                     @endforeach
                                 </select>
                                 @error('kategori')
                                     <div class="invalid-feedback">
-                                        {{ $errors->first('kategori')  }}
+                                        {{ $errors->first('kategori') }}
                                     </div>
                                 @enderror
                             </div>
@@ -62,11 +67,13 @@
                         <div class="form-group row">
                             <label for="asal_surat" class="col-sm-2 col-form-label">Asal Surat</label>
                             <div class="col-sm-10">
-                                <input type="text" name="asal_surat" class="form-control @error('asal_surat') is-invalid @enderror" id="asal_surat"
-                                    value="{{ (old('asal_surat'))?old('asal_surat'):$asal_surat }}" placeholder="Asal Surat...">
+                                <input type="text" name="asal_surat"
+                                    class="form-control @error('asal_surat') is-invalid @enderror" id="asal_surat"
+                                    value="{{ old('asal_surat') ? old('asal_surat') : $asal_surat }}"
+                                    placeholder="Asal Surat...">
                                 @error('asal_surat')
                                     <div class="invalid-feedback">
-                                        {{ $errors->first('asal_surat')  }}
+                                        {{ $errors->first('asal_surat') }}
                                     </div>
                                 @enderror
                             </div>
@@ -74,11 +81,12 @@
                         <div class="form-group row">
                             <label for="tanggal_masuk" class="col-sm-2 col-form-label">Tanggal Masuk</label>
                             <div class="col-sm-10">
-                                <input type="date" name="tanggal_masuk" class="form-control @error('tanggal_masuk') is-invalid @enderror" id="tanggal_masuk"
-                                    value="{{ (old('tanggal_masuk'))?old('tanggal_masuk'):$tanggal_masuk }}">
+                                <input type="date" name="tanggal_masuk"
+                                    class="form-control @error('tanggal_masuk') is-invalid @enderror" id="tanggal_masuk"
+                                    value="{{ old('tanggal_masuk') ? old('tanggal_masuk') : $tanggal_masuk }}">
                                 @error('tanggal_masuk')
                                     <div class="invalid-feedback">
-                                        {{ $errors->first('tanggal_masuk')  }}
+                                        {{ $errors->first('tanggal_masuk') }}
                                     </div>
                                 @enderror
                             </div>
@@ -86,11 +94,11 @@
                         <div class="form-group row">
                             <label for="keterangan" class="col-sm-2 col-form-label">Keterangan</label>
                             <div class="col-sm-10">
-                                <textarea name="keterangan" class="form-control @error('keterangan') is-invalid @enderror" id="keterangan" id="exampleFormControlTextarea1" rows="3"
-                                    placeholder="Keterangan...">{{ (old('keterangan'))?old('keterangan'):$keterangan }}</textarea>
+                                <textarea name="keterangan" class="form-control @error('keterangan') is-invalid @enderror" id="keterangan"
+                                    id="exampleFormControlTextarea1" rows="3" placeholder="Keterangan...">{{ old('keterangan') ? old('keterangan') : $keterangan }}</textarea>
                                 @error('keterangan')
                                     <div class="invalid-feedback">
-                                        {{ $errors->first('keterangan')  }}
+                                        {{ $errors->first('keterangan') }}
                                     </div>
                                 @enderror
                             </div>
