@@ -90,3 +90,8 @@ $(document).ready(function () {
     const formattedDate = `${dayName}, ${dayNumber} ${monthName} ${date.getFullYear()}`;
     document.querySelector("#current_date").innerHTML = formattedDate;
 });
+
+// HIDE ALERT
+setTimeout(function () {
+    document.getElementById("alert-div").style.display = "none";
+}, 3000);

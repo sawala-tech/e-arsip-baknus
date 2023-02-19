@@ -1,15 +1,14 @@
 @extends('components.layout.main.app')
 @section('title', 'E-Arsip || Surat Masuk')
 @section('content')
-    @if (session('message'))
-        <div>
-            {{ session('message') }}
-        </div>
-    @endif
-
-    <h2 class="fs-3 fw-bolder">Surat Masuk</h2>
-    <div class="container-fluid p-0 my-5">
-        <div class="justify-content-between mb-3 d-flex">
+    <div class="container-fluid p-0 mb-5">
+        <h2>Surat Masuk</h2>
+        @if (session('message'))
+            <div class="alert alert-success w-100 py-1 px-3 text-center" role="alert" id="alert-div">
+                {{ session('message') }}
+            </div>
+        @endif
+        <div class="justify-content-between mb-3 d-flex pt-2">
             <button onclick="window.location.href='{{ route('surat-masuk.create') }}'"
                 class="rounded-lg bg-sea p-2 text-white align-items-center d-flex border-0">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
