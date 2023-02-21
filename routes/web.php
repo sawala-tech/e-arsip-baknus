@@ -18,7 +18,9 @@ use App\Http\Controllers\Dashboard;
 */
 
 Route::get('/', Authentication::class)->name('login')->middleware('guest');
+Route::get('/register', [Authentication::class, 'register'])->name('register')->middleware('guest');
 Route::post('/login', [Authentication::class, 'login'])->middleware('guest');
+Route::post('/register', [Authentication::class, 'save'])->middleware('guest');
 Route::post('/logout', [Authentication::class, 'logout'])->middleware('auth');
 Route::get('/surat-keluar/laporan', [SuratKeluarController::class, 'laporan'])->middleware('auth');
 Route::resource('/surat-keluar', SuratKeluarController::class)->middleware('auth');
