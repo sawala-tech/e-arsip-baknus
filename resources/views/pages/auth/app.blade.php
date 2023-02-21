@@ -17,8 +17,11 @@
                 <div class="mb-3">
                     <input type="email" name="email" class="form-control rounded" placeholder="Email" required>
                 </div>
-                <div class="mb-3">
-                    <input type="password" name="password" class="form-control rounded" placeholder="Kata Sandi" required>
+                <div class="mb-3 position-relative">
+                    <i id="tooglePassword"
+                        class="fas fa-eye-slash fa-sm position-absolute mt-2 pt-1 mr-2 cursor-pointer text-secondary right-0"></i>
+                    <input type="password" name="password" class="form-control rounded" placeholder="Kata Sandi" required
+                        id="password">
                 </div>
                 <a href="dashboard">
                     <button type="submit" class="btn bg-sea text-white w-100">Masuk</button>
