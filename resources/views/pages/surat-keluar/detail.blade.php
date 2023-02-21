@@ -51,7 +51,8 @@
                 <form action="{{ route('surat-keluar.destroy', $suratKeluar->id) }}" method="POST" class="d-inline-flex">
                     @csrf
                     @method('DELETE')
-                    <button class="bg-danger p-2 text-white rounded-lg border-0 mr-1" type="submit">
+                    <button class="bg-danger p-2 text-white rounded-lg border-0 mr-1" type="submit"
+                        onclick="confirm('Yakin ingin menghapus data?')">
                         <i class="fas fa-trash-alt"></i>
                         <span>Hapus</span>
                     </button>
