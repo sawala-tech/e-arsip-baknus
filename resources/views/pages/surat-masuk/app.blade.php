@@ -82,7 +82,8 @@
                                 <form action="{{ route('surat-masuk.destroy', $item->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="bg-danger rounded border-0 align-items-center d-flex p-2">
+                                    <button type="submit" class="bg-danger rounded border-0 align-items-center d-flex p-2"
+                                        onclick="confirm('Yakin ingin menghapus data?')">
                                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path
