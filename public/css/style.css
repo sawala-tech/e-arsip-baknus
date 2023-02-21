@@ -96,6 +96,14 @@ button:focus {
     list-style: none !important;
 }
 
+.right-0 {
+    right: 0 !important;
+}
+
+.cursor-pointer {
+    cursor: pointer !important;
+}
+
 @media print {
 
     aside,
