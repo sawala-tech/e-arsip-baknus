@@ -23,9 +23,15 @@
                     <input type="password" name="password" class="form-control rounded" placeholder="Kata Sandi" required
                         id="password">
                 </div>
-                <a href="dashboard">
-                    <button type="submit" class="btn bg-sea text-white w-100">Masuk</button>
-                </a>
+                <div>
+                    <a href="dashboard">
+                        <button type="submit" class="btn bg-sea text-white w-100">Masuk</button>
+                    </a>
+                    <small class="d-flex justify-content-center mt-2">
+                        belum mempunyai akun?&nbsp;
+                        <a href="/register">daftar</a>
+                    </small>
+                </div>
             </form>
         </div>
     </div>

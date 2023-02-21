@@ -52,7 +52,7 @@
                     @csrf
                     @method('DELETE')
                     <button class="bg-danger p-2 text-white rounded-lg border-0 mr-1" type="submit"
-                        onclick="confirm('Yakin ingin menghapus data?')">
+                        onclick="return confirm('Yakin ingin menghapus data?')">
                         <i class="fas fa-trash-alt"></i>
                         <span>Hapus</span>
                     </button>

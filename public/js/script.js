@@ -59,14 +59,30 @@ $(document).ready(function () {
             },
         },
     });
+
+    const exportLaporanMasuk = document.querySelector("#exportLaporanMasuk");
+    const exportLaporanKeluar = document.querySelector("#exportLaporanKeluar");
+
     $("#search-input").keyup(function () {
         table.search(this.value).draw();
-        document
-            .querySelector("#exportLaporanMasuk")
-            .setAttribute("href", "/export/surat-masuk?search=" + this.value);
-        document
-            .querySelector("#exportLaporanKeluar")
-            .setAttribute("href", "/export/surat-keluar?search=" + this.value);
+
+        const dataSearch = table
+            .search(this.value)
+            .row({ search: "applied" })
+            .data();
+        if (dataSearch) {
+            exportLaporanMasuk.setAttribute(
+                "href",
+                "/export/surat-masuk?search=" + this.value
+            );
+            exportLaporanKeluar.setAttribute(
+                "href",
+                "/export/surat-keluar?search=" + this.value
+            );
+        } else {
+            exportLaporanMasuk.setAttribute("href", "#");
+            exportLaporanKeluar.setAttribute("href", "#");
+        }
     });
 });
 
