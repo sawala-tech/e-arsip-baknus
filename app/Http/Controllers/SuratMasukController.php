@@ -150,7 +150,7 @@ class SuratMasukController extends Controller
         $suratMasuk->save();
 
         Session::flash('message', 'Data berhasil di update!');
-        return Redirect::to('surat-masuk/'.$suratMasuk->id.'/edit');
+        return Redirect::to('surat-masuk');
     }
 
     /**

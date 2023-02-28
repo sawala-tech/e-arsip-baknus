@@ -107,9 +107,16 @@
                             <label for="customFile" class="col-sm-2 col-form-label">File</label>
                             <div class="col-sm-10">
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="customFile" name="lampiran">
-                                    <label class="custom-file-label" for="customFile" value="{{ $file_surat }}">Choose
-                                        file</label>
+                                    <input type="file" class="custom-file-input @error('lampiran') is-invalid @enderror" id="customFile" name="lampiran">
+                                    <label class="custom-file-label" for="customFile" value="{{ $file_surat }}">Choose file</label>
+                                    <small class="text-secondary"> current file:
+                                            <a href="{{ '/storage/lampiran/' . $file_surat }}" target="_blank">{{ $file_surat }}</a>
+                                    </small>
+                                    @error('lampiran')
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('lampiran') }}
+                                        </div>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
