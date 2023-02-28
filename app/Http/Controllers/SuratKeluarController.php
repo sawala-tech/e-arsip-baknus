@@ -148,7 +148,7 @@ class SuratKeluarController extends Controller
         $suratKeluar->save();
 
         Session::flash('message', 'Data berhasil di update!');
-        return Redirect::to('surat-keluar/'.$suratKeluar->id.'/edit');
+        return Redirect::to('surat-keluar');
     }
 
     /**
